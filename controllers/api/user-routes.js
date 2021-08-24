@@ -49,7 +49,15 @@ router.post('/', (req, res) => {
         username: req.body.username,
         password: req.body.password
     })
-        .then(dbUserData => res.json(dbUserData))
+        .then(dbUserData => {
+            req.session.save(() => {
+                req.session.user_id = dbUserData.id;
+                req.session.username = dbUserData.username;
+                req.session.loggedIn = true;
+
+                res.json(dbUserData);
+            });
+        })
         .catch(err => res.status(500).json(err));
 });
 
@@ -64,19 +72,34 @@ router.post('/login', (req, res) => {
             res.status(400).json({ message: 'No user found with this username.' });
             return;
         }
-    
+
         const validPassword = await dbUserData.comparePassword(req.body.password);
         if (!validPassword) {
             res.status(404).json({ message: 'Incorrect password!' });
             return;
         }
-        res.json({ user: dbUserData,  message: 'You are now logged in!' });
+
+        req.session.save(() => {
+            //declares session variables
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+
+            res.json({ user: dbUserData, message: 'You are now logged in!' });
+        });
     })
 });
 
 //POST /api/logout
 router.post('/logout', (req, res) => {
-
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    }
+    else {
+        res.status(404).end();
+    }
 });
 
 //PUT /api/users/:id

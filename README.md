@@ -69,4 +69,4 @@ Log in and sign up
 <img src='' alt='Log in and Sign up pages'/>
 
 Sample structure of Sequelize
-<img src='./assets/images/Data_Models.jpg' alt='View of Blog model in Sequelize'/>
+<img src='./assets/img/Data_Models.jpg' alt='View of Blog model in Sequelize'/>
