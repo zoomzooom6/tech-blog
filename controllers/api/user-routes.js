@@ -41,7 +41,23 @@ router.post('/', (req, res) => {
 
 //POST /api/login
 router.post('/login', (req, res) => {
-
+    User.findOne({
+        where: {
+            username: req.body.username
+        }
+    }).then(async dbUserData => {
+        if (!dbUserData) {
+            res.status(400).json({ message: 'No user found with this username.' });
+            return;
+        }
+    
+        const validPassword = await dbUserData.comparePassword(req.body.password);
+        if (!validPassword) {
+            res.status(404).json({ message: 'Incorrect password!' });
+            return;
+        }
+        res.json({ user: dbUserData,  message: 'You are now logged in!' });
+    })
 });
 
 //POST /api/logout
