@@ -60,13 +60,13 @@ The website will be available on <a href="#" target="_blank">Heroku</a>.
 
 ## Final Results
 Main homepage of website
-<img src='' alt='Main Landing Page'/>
+<img src='./assets/img/MainPage.jpg' alt='Main Landing Page'/>
 
 Dashboard view
-<img src='' alt='Dashboard for logged in users'/>
+<img src='./assets/img/Dashboard.jpg' alt='Dashboard for logged in users'/>
 
 Log in and sign up
-<img src='' alt='Log in and Sign up pages'/>
+<img src='./assets/img/LoginSignUp.jpg' alt='Log in and Sign up pages'/>
 
 Sample structure of Sequelize
 <img src='./assets/img/Data_Models.jpg' alt='View of Blog model in Sequelize'/>
