@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 //GET /api/users
 router.get('/', (req, res) => {
@@ -16,7 +16,21 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
-        }
+        },
+        include: [
+            {
+                model: Post,
+                attributes: ['id', 'title', 'created_at']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'created_at'],
+                include: {
+                    model: Post,
+                    attributes: ['title']
+                }
+            }
+        ]
     })
         .then(dbUserData => {
             if (!dbUserData) {
@@ -80,7 +94,7 @@ router.put('/:id', (req, res) => {
             }
             res.json(dbUserData);
         })
-        .catch(err => res.status(500).json(err));
+        .catch(err => res.status(400).json(err));
 });
 
 //DELETE /api/users/:id
@@ -97,7 +111,7 @@ router.delete('/:id', (req, res) => {
             }
             res.json(dbUserData);
         })
-        .catch(err => res.status(500).json(err));
+        .catch(err => res.status(400).json(err));
 });
 
 module.exports = router;

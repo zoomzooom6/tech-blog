@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 
 //GET all posts /api/posts/
 router.get('/', (req, res) => {
@@ -7,6 +7,14 @@ router.get('/', (req, res) => {
         attributes: ['id', 'title', 'created_at'],
         order: [['created_at', 'DESC']],
         include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
             {
                 model: User,
                 attributes: ['username']
@@ -49,7 +57,7 @@ router.post('/', (req, res) => {
         user_id: req.body.user_id
     })
         .then(dbPostData => res.json(dbPostData))
-        .catch(err => res.status(500).json(err));
+        .catch(err => res.status(400).json(err));
 });
 
 //PUT /api/posts/:id
@@ -71,7 +79,7 @@ router.put('/:id', (req, res) => {
             }
             res.json(dbPostData);
         })
-        .catch(err => res.status(500).json(err));
+        .catch(err => res.status(400).json(err));
 });
 
 //DELETE /api/posts/:id
@@ -83,12 +91,12 @@ router.delete('/:id', (req, res) => {
     })
         .then(dbPostData => {
             if (!dbPostData) {
-                res.status(500).json({ message: 'No post found with this id.' });
+                res.status(404).json({ message: 'No post found with this id.' });
                 return;
             }
             res.json(dbPostData);
         })
-        .catch(err => res.status(500).json(err));
+        .catch(err => res.status(400).json(err));
 })
 
 module.exports = router;
