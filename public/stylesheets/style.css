@@ -1,6 +1,6 @@
 :root {
-    --primary: #c0e7a1;
-    --secondary: #54c4b5;
+    --primary: #77a4df;
+    --secondary: #b068e0;
     --tertiary: #8339b4;
     --light-dark: #7e7b7a;
     --dark: #1a2418;
@@ -10,6 +10,10 @@
 
 * {
     box-sizing: border-box;
+}
+
+header {
+    background-color: var(--light-dark);
 }
 
 body {
@@ -22,18 +26,33 @@ body {
     font-size: 16px;
 }
 
+footer {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: var(--light)
+}
+
 h1 {
     font-weight: 700;
     margin: 0;
     color: var(--light);
     line-height: 1.25;
+    padding: 20px;
 }
 
-h2, h3, h4, h5, h6 {
+h2, h3 {
     font-weight: 700;
     margin: 0;
-    color: var(--dark);
+    background-color: var(--secondary);
+    color: var(--light);
     line-height: 1.25;
+}
+
+nav {
+    padding: 15px;
 }
 
 main {
@@ -42,154 +61,52 @@ main {
 }
 
 p {
-    font-size: 1.2rem;
+    background-color: var(--light);
+    color:var(--dark);
+    font-size: 24px;
 }
 
-.btn {
-    font-size: 1.3rem;
-    text-decoration: none;
-    padding: 6px 5px;
-    width: 100%;
-    display: block;
-    margin: 5px 0;
-    border-radius: var(--border-radius);
-    color: var(--primary);
-    border: none;
-    outline: none;
+ul {
+    background-color: var(--secondary);
+    padding: 5px;
+    margin: 12px;
+}
+
+ul .title {
+    background-color: var(--tertiary);
+    padding: 10px;
+    font-size: 24px;
+}
+
+button {
+    background-color: var(--tertiary);
+    border: 0;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    transition: background-color .1s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: var(--secondary);
+}
+
+.comments {
+    margin: 15px;
     background-color: var(--light-dark);
-    box-shadow: 3px 3px var(--dark);
-    transform: translate(-1px, -1px);
-}
-
-.padded {
-    margin: 25px 0;
-}
-
-.btn:hover {
-    color: var(--primary);
-    background-color: var(--dark);
-    transform: translate(0, 0);
-    box-shadow: 2px 2px var(--dark);
-}
-
-.btn-inline {
-    display: inline;
-}
-
-.hero {
-    padding: 1% 4%;
-    background-color: var(--dark);
-    color: var(--primary);
-    text-align: center;
-}
-
-.app-title {
-    font-size: 3rem;
-    background-color: var(--tertiary);
     color: var(--light);
-    padding: 0 10px;
-    display: inline-block;
-    border-radius: var(--border-radius);
-    box-shadow: 6px 5px var(--light-dark);
 }
 
-.list-group {
-    padding: 3px;
-    list-style: none;
-    border: 1px solid var(--dark);
-    margin-bottom: 30px;
+.comment {
+    padding: 15px;
+    border-top: 2px, solid, rgb(25, 76, 128);
 }
 
-.list-group h1 {
+.text {
+    background-color: var(--light);
     color: var(--dark);
-}
-
-.icon {
-    vertical-align: middle;
-}
-
-.rating {
-    display: inline-block;
-    margin: 0;
-    padding: 5px 15px;
-    color: var(--light);
-    border-radius: 12px;
-}
-
-.uvDanger {
-    background-color: #750308;
-}
-
-.uvHigh {
-    background-color: #cf0d0d;
-}
-
-.uvMod {
-    background-color: #df901a;
-}
-
-.uvLow {
-    background-color: #12a52a;
-}
-
-.forecast-background {
-    color: var(--light);
-    background-color: var(--tertiary);
-}
-
-.forecast-background h2 {
-    color: var(--light);
-}
-
-/* CARDS */
-
-.card {
-    margin: 0 0 20px 0;
-    border: 3px solid var(--dark);
-    border-radius: var(--border-radius);
-}
-
-.card-header {
-    color: var(--primary);
-    background-color: var(--dark);
-    padding: 2.5%;
-    border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
-}
-
-.card-history {
-    border-top: 2px solid var(--light-dark);
-}
-
-.card-history p {
-    text-align: center;
-}
-
-.card-body {
-    padding: 2.5%;
-}
-
-.forecast {
-    margin: 15px 0 20px 0;
-}
-
-/* FORM */
-
-.form-label, .form-input, .form-textarea {
-    display: block;
-}
-
-.form-label {
-    font-size: 1.1rem;
-    margin: 0 0 0 5px;
-}
-
-.form-input {
-    width: 100%;
-    padding: 3%;
-    margin: 5px 0;
-    font-size: 1.2rem;
-    border: 2px solid var(--light-dark);
-    border-radius: var(--border-radius);
 }
 
 /* HEIGHT / WIDTH UTILS */
@@ -344,7 +261,6 @@ p {
     .col-sm-12 {
         flex: 0 0 100%;
     }
-
     #futureForecast {
         flex-direction: column;
     }

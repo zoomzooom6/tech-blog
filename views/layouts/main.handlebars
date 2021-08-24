@@ -11,23 +11,24 @@
 <body>
     <div class="wrapper">
         <header>
-            <h1>
-                <a href="/">The Tech Blog</a>
-            </h1>
             <nav>
+                <button><a href="/">home</a></button>
                 {{#if loggedIn}}
-                <a href="/dashboard">dashboard</a>
+                <button><a href="/dashboard" >dashboard</a></button>
                 <button id="logout" class="btn-no-style">logout</button>
                 {{else}}
-                <a href="/login">login</a>
+                <button><a href="/login">login</a></button>
                 {{/if}}
             </nav>
+            <h1>
+                The Tech Blog
+            </h1>
         </header>
         <main>
             {{{ body }}}
         </main>
         <footer>
-            © 2021 Tony Huang
+            © Tony Huang 2021 <a href="https://github.com/zoomzooom6" target="_blank">Github</a>
         </footer>
     </div>
     {{#if loggedIn}}
