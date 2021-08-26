@@ -56,7 +56,7 @@ Handlebars.js
 Designed and written by Tony Huang
 
 ## Live Deployment
-The website will be available on <a href="#" target="_blank">Heroku</a>.
+The website will be available on <a href="https://blog-news-mvc.herokuapp.com/" target="_blank">Heroku</a>.
 
 ## Final Results
 Main homepage of website
