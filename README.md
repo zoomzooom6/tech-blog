@@ -1,5 +1,5 @@
 # Tech Blog
-The goal of this project is to create a website that allows (registered) developers to publish blog posts and comment on other posts as well. The page will be deployed on <a href="#" target="_blank">Heroku</a>. Made following the Model-View-Controller (MVC) paradigm in the architectural structure with Handlebars.js as the templating language and Sequelize as the ORM.
+The goal of this project is to create a website that allows (registered) developers to publish blog posts and comment on other posts as well. The page will be deployed on <a href="https://blog-news-mvc.herokuapp.com/" target="_blank">Heroku</a>. Made following the Model-View-Controller (MVC) paradigm in the architectural structure with Handlebars.js as the templating language and Sequelize as the ORM.
 
 ## Table of Contents
 * [Criteria](#criteria)
